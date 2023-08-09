@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (($_SESSION['role'] ?? '') != 'doctor') {
+if (($_SESSION['role'] ?? '') !== 'doctor') {
   header("Location: login.php");
   exit();
 }

@@ -4,8 +4,8 @@
 <div style="margin-top: 80px; background: #24285b">
   <div class="container">
     <form id="filter-form">
-      <div class="row py-2 gy-2">
-        <div class="col p-0 mt-0 d-flex align-items-center justify-content-between col-12 col-md-6">
+      <div class="row py-2">
+        <div class="col p-0 mt-0 mb-2 mb-md-0 d-flex align-items-center justify-content-between col-12 col-md-6">
           <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="border-radius: 5px;">
               Filter by&nbsp;
@@ -13,7 +13,7 @@
             <div class="dropdown-menu" style="border-radius: 5px;">
 
               <!-- Filter form -->
-              <div class="px-4 py-3" style="width: 500px;">
+              <div class="px-4 py-3" style="width: 500px; max-width: 100vw">
                 <div class="mb-3 input-group">
                   <span class="input-group-text" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">Specialization</span>
                   <select class="form-select" id="specialization" name="specialization" autofocus="" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
@@ -126,7 +126,7 @@
             </h6>
           </div>
           <div class="card-footer d-flex justify-content-between">
-            <a class="btn btn-info shadow rounded-pill" href="#">Call</a><button class="btn btn-primary rounded-pill shadow" type="button" data-bs-toggle="modal" data-bs-target="#modal-1">
+            <a class="btn btn-info shadow rounded-pill" href="tel:#">Call</a><button class="btn btn-primary rounded-pill shadow" type="button" data-bs-toggle="modal" data-bs-target="#modal-1">
               Book Appointment
             </button>
           </div>
@@ -211,27 +211,57 @@
     </div>
   </div>
 </section>
-<div class="modal fade" role="dialog" tabindex="-1" id="modal-1" data-bs-backdrop="static">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-    <div class="modal-content rounded-4">
-      <div class="modal-header">
-        <h4 class="modal-title">Pick a Date and Time</h4>
-        <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <input class="form-control" type="date" name="date" required="" /><input class="form-control" type="date" required="" />
+
+
+<?php if (($_SESSION['role'] ?? '') === 'user') : ?>
+  <div class="modal fade" role="dialog" tabindex="-1" id="modal-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h4 class="modal-title">Pick a Date and Time</h4>
+          <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+        </div>
+        <form action="book-appointment.php" method="post" class="needs-validation" novalidate>
+          <div class="modal-body">
+            <div class="input-group my-3">
+              <span class="input-group-text" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">Date</span>
+              <input class="form-control" type="date" name="date" required="" min="<?= date('Y-m-d'); ?>" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;" />
+              <div class="invalid-feedback">Please a choose a date</div>
+            </div>
+            <div class="input-group my-3">
+              <span class="input-group-text" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">Time</span>
+              <input class="form-control" type="time" name="date" required="" min="10:00" max="22:00" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;" />
+              <div class="invalid-feedback">Please a choose a time between 10 AM and 10 PM</div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-light shadow" type="button" data-bs-dismiss="modal" style="border-radius: 5px;">Cancel</button>
+            <button class="btn btn-primary shadow" type="submit" style="border-radius: 5px;">Book Appointment</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-light" type="button" data-bs-dismiss="modal">
-          Cancel</button><button class="btn btn-primary" type="button">
-          Book Appointment
-        </button>
       </div>
     </div>
   </div>
-</div>
+
+<?php else : ?>
+  <div class="modal fade" role="dialog" tabindex="-1" id="modal-1" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+      <div class="modal-content rounded-4">
+        <div class="modal-header">
+          <h4 class="modal-title">Please Login!</h4>
+          <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p class="">You need to first login with your account in order for you to book an appointment.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-light shadow" type="button" data-bs-dismiss="modal" style="border-radius: 5px;">Cancel</button>
+          <a class="btn btn-primary shadow" href="login.php" style="border-radius: 5px;">Login</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php endif; ?>
 
 
 <?php include_once "includes/footer.php" ?>
