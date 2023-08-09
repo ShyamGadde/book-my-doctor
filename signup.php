@@ -4,7 +4,7 @@
 <section class="py-4 py-md-5 my-5">
   <div class="container py-md-5" data-aos="fade-up">
     <div class="row">
-      <div class="col-md-6 text-center d-flex">
+      <div class="col-md-6 text-center">
         <img class="img-fluid w-100" src="assets/img/illustrations/register.svg" />
       </div>
       <div class="col-md-5 col-xl-4 text-center text-md-start">
