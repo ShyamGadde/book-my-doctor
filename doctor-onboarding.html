@@ -199,7 +199,7 @@
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="find-doctor.html">Find Doctors</a>
@@ -297,7 +297,7 @@
           <a
             class="btn btn-primary shadow"
             role="button"
-            href="login.html"
+            href="login.php"
             style="border-radius: 5px"
             >Login</a
           ><a
@@ -342,6 +342,7 @@
                   required=""
                   style="border-radius: 5px"
                 /><label class="form-label" for="name">Full Name</label>
+                <div class="invalid-feedback">Please enter your name</div>
               </div>
               <div class="mb-3 form-floating">
                 <input
@@ -355,6 +356,9 @@
                   pattern="^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
                   style="border-radius: 5px"
                 /><label class="form-label" for="email">Email Address</label>
+                <div class="invalid-feedback">
+                  Please enter a valid email address
+                </div>
               </div>
               <div class="mb-3 form-floating">
                 <input
@@ -371,6 +375,10 @@
                   required=""
                   style="border-radius: 5px"
                 /><label class="form-label" for="pwd">Password</label>
+                <div class="invalid-feedback">
+                  Password contain at least one number and one uppercase and
+                  lowercase letter, and must be between 8 to 20 characters
+                </div>
               </div>
               <div class="mb-3 form-floating">
                 <input
@@ -389,6 +397,10 @@
                 /><label class="form-label" for="confirm-pwd"
                   >Confirm Password</label
                 >
+                <div class="invalid-feedback">
+                  Password contain at least one number and one uppercase and
+                  lowercase letter, and must be between 8 to 20 characters
+                </div>
               </div>
               <div class="mb-3 form-floating">
                 <input
@@ -403,6 +415,9 @@
                   maxlength="10"
                   style="border-radius: 5px"
                 /><label class="form-label">Phone</label>
+                <div class="invalid-feedback">
+                  Please enter a valid phone number
+                </div>
               </div>
               <div class="mb-3 form-floating">
                 <select
@@ -413,7 +428,7 @@
                   required=""
                   style="border-radius: 5px"
                 >
-                  <option value="undefined" selected="">
+                  <option value="" selected="">
                     Select your specialization
                   </option>
                   <option value="">Dentist</option>
@@ -428,6 +443,9 @@
                 ><label class="form-label" for="specialization"
                   >Specialization</label
                 >
+                <div class="invalid-feedback">
+                  Please select your Specialization
+                </div>
               </div>
               <div class="mb-3 form-floating">
                 <select
@@ -449,6 +467,7 @@
                   <option value="">BSc</option>
                   <option value="">MSc</option></select
                 ><label class="form-label" for="degree">Degree</label>
+                <div class="invalid-feedback">Please select your Degree</div>
               </div>
               <div class="mb-3 form-floating">
                 <input
@@ -462,6 +481,9 @@
                 /><label class="form-label" for="experience"
                   >Experience (years)</label
                 >
+                <div class="invalid-feedback">
+                  Please enter your years of experience
+                </div>
               </div>
               <div class="mb-3 input-group">
                 <span
@@ -481,6 +503,9 @@
                     border-bottom-right-radius: 5px;
                   "
                 />
+                <div class="invalid-feedback">
+                  Please enter your Date of Birth
+                </div>
               </div>
               <div
                 class="mb-3 input-group d-flex align-items-center"
@@ -500,6 +525,7 @@
                     type="radio"
                     id="formCheck-1"
                     name="gender"
+                    value="M"
                     required=""
                   /><label class="form-check-label" for="formCheck-1"
                     >Male</label
@@ -511,6 +537,7 @@
                     type="radio"
                     id="formCheck-2"
                     name="gender"
+                    value="F"
                     required=""
                   /><label class="form-check-label" for="formCheck-2"
                     >Female</label
@@ -528,7 +555,7 @@
             </form>
             <p class="text-muted">
               Have an account?
-              <a href="login.html"
+              <a href="login.php"
                 >Log in&nbsp;<svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="1em"
