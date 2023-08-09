@@ -18,7 +18,7 @@
             calls, no more hassle. Just book, visit, and get well.
           </p>
           <div data-aos="fade-up" data-aos-delay="400" class="mt-5">
-            <a class="align-items-center btn btn-primary rounded-pill d-inline-flex align-items-center shadow" href="find-doctor.html">Find a Doctor!&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-chevron-right">
+            <a class="align-items-center btn btn-primary rounded-pill d-inline-flex align-items-center shadow" href="find-doctor.php">Find a Doctor!&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-chevron-right">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <polyline points="9 6 15 12 9 18"></polyline>
               </svg></a>
