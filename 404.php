@@ -9,9 +9,6 @@
       </div>
       <div class="col text-center">
         <h2 class="display-3 fw-bold mb-4">Page Not Found</h2>
-        <p class="fs-4 text-muted">
-          Fusce adipiscing sit, torquent porta pulvinar.
-        </p>
       </div>
     </div>
   </div>
