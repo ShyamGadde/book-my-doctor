@@ -26,7 +26,7 @@
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="assets/js/aos.min.js"></script>
 <script src="assets/js/bs-init.js"></script>
-<script src="assets/js/startup-modern.js"></script>
+<script src="assets/js/script.js"></script>
 </body>
 
 </html>
