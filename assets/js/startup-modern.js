@@ -41,4 +41,11 @@
       form.classList.add('was-validated')
     }, false)
   })
-})()
+})();
+
+(function() {
+  "use strict"; // Start of use strict
+
+  document.querySelector('#sort-input').addEventListener('change', function() { this.form.submit(); });
+
+})(); // End of use strict

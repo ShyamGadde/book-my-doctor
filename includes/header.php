@@ -137,6 +137,7 @@
 
   <pre style="margin-top: 80px;">
     <?= var_dump($_POST) ?>
+    <?= var_dump($_GET) ?>
   </pre>
 
   <nav class="navbar navbar-expand-md fixed-top navbar-shrink py-3 navbar-light" id="mainNav">
