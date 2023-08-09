@@ -25,14 +25,14 @@
           <div class="mb-3 form-floating">
             <input class="shadow-sm form-control" type="password" id="pwd" name="password" placeholder="Password" autofocus="" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and between 8 to 20 characters" required="" style="border-radius: 5px" /><label class="form-label" for="pwd">Password</label>
             <div class="invalid-feedback">
-              Password contain at least one number and one uppercase and
+              Password must contain at least one number and one uppercase and
               lowercase letter, and must be between 8 to 20 characters
             </div>
           </div>
           <div class="mb-3 form-floating">
             <input class="shadow-sm form-control" type="password" id="confirm-pwd" name="password_repeat" placeholder="Repeat Password" autofocus="" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and between 8 to 20 characters" required="" style="border-radius: 5px" /><label class="form-label" for="confirm-pwd">Confirm Password</label>
             <div class="invalid-feedback">
-              Password contain at least one number and one uppercase and
+              Password must contain at least one number and one uppercase and
               lowercase letter, and must be between 8 to 20 characters
             </div>
           </div>
@@ -90,19 +90,19 @@
               " />
             <div class="invalid-feedback">Please enter your Date of Birth</div>
           </div>
-          <div class="mb-3 input-group d-flex align-items-center" style="border-radius: 5px; border: 1px solid rgb(177, 177, 188)">
-            <span class="input-group-text" style="
-                border-top-left-radius: 5px;
-                border-bottom-left-radius: 5px;
-              ">Gender</span>
-            <div class="form-check mx-3">
-              <input class="form-check-input" type="radio" id="formCheck-1" name="gender" value="M" required="" /><label class="form-check-label" for="formCheck-1">Male</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="formCheck-2" name="gender" value="F" required="" /><label class="form-check-label" for="formCheck-2">Female</label>
+
+          <div class="mb-3 form-floating">
+            <select class="form-select" id="gender" name="gender" autofocus="" required="" style="border-radius: 5px">
+              <option selected value="">Select your Gender</option>
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+            </select><label class="form-label" for="gender">Gender</label>
+            <div class="invalid-feedback">
+              Please select your Gender
             </div>
           </div>
-          <div class="mb-5">
+
+          <div class="mb-5 mt-5">
             <button class="btn btn-primary shadow rounded-pill" type="submit">
               Create account
             </button>

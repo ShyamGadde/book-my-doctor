@@ -13,13 +13,10 @@
             <div class="dropdown-menu" style="border-radius: 5px;">
 
               <!-- Filter form -->
-              <div class="px-4 py-3" style="width: 500px; max-width: 100vw">
-                <div class="mb-3 input-group">
-                  <span class="input-group-text" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">Specialization</span>
-                  <select class="form-select" id="specialization" name="specialization" autofocus="" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
-                    <option value="" selected="">
-                      Choose specialization
-                    </option>
+              <div class="px-4 py-3" style="width: 400px; max-width: 100vw">
+                <div class="mb-3 form-floating">
+                  <select class="form-select" id="specialization" name="specialization" autofocus="" style="border-radius: 5px">
+                    <option selected value="">Choose specialization</option>
                     <option>Dentist</option>
                     <option>Gynecologist/Obstetrician</option>
                     <option>Dietitian/Nutrition</option>
@@ -29,13 +26,11 @@
                     <option>General Physician</option>
                     <option>Pediatrician</option>
                     <option>Gastroenterologist</option>
-                  </select>
+                  </select><label class="form-label" for="specialization">Specialization</label>
                 </div>
-
-                <div class="mb-3 input-group">
-                  <span class="input-group-text" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">Degree</span>
-                  <select class="form-select" id="degree" autofocus="" name="degree" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
-                    <option value="" selected="">Choose degree</option>
+                <div class="mb-3 form-floating">
+                  <select class="form-select" id="degree" autofocus="" name="degree" style="border-radius: 5px">
+                    <option selected value="">Choose degree</option>
                     <option>MBBS</option>
                     <option>MS</option>
                     <option>MD</option>
@@ -45,24 +40,17 @@
                     <option>Master of Physiotherapy (MPT)</option>
                     <option>BSc</option>
                     <option>MSc</option>
-                  </select>
+                  </select><label class="form-label" for="degree">Degree</label>
                 </div>
 
-                <div class="mb-3 input-group d-flex align-items-center" style="
-                        border-radius: 5px;
-                        border: 1px solid rgb(177, 177, 188);
-                      ">
-                  <span class="input-group-text" style="
-                          border-top-left-radius: 5px;
-                          border-bottom-left-radius: 5px;
-                        ">Gender</span>
-                  <div class="form-check mx-3">
-                    <input class="form-check-input" type="radio" id="formCheck-1" name="gender" value="M" /><label class="form-check-label" for="formCheck-1">Male</label>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="radio" id="formCheck-2" name="gender" value="F" /><label class="form-check-label" for="formCheck-2">Female</label>
-                  </div>
+                <div class="mb-3 form-floating">
+                  <select class="form-select" id="gender" name="gender" autofocus="" style="border-radius: 5px">
+                    <option selected value="">Choose Gender</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                  </select><label class="form-label" for="gender">Gender</label>
                 </div>
+
                 <div class="d-flex justify-content-between">
                   <input class="btn btn-dark rounded-pill" type="reset" value="Reset">
                   <input class="btn btn-primary rounded-pill" type="submit" value="Filter" />
