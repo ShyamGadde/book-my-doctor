@@ -166,8 +166,7 @@
         </ul>
         <div class="theme-switcher dropdown">
           <a class="dropdown-toggle active" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="
-                padding-left: 9px;
-                padding-right: 9px;
+                padding-right: 20px;
                 margin-top: 10px;
                 margin-bottom: 10px;
                 padding-top: 10px;
