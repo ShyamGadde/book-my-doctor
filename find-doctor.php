@@ -7,7 +7,7 @@
       <div class="row py-2">
         <div class="col p-0 mt-0 mb-2 mb-md-0 d-flex align-items-center justify-content-between col-12 col-md-6">
           <div class="dropdown">
-            <button class="btn btn-outline-light dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="border-radius: 5px;">
+            <button class="btn btn-outline-info dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="border-radius: 5px;">
               Filter by&nbsp;
             </button>
             <div class="dropdown-menu" style="border-radius: 5px;">
