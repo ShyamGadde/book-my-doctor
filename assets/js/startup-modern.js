@@ -1,3 +1,4 @@
+// Responsive Navbar
 (function() {
   "use strict"; // Start of use strict
 
@@ -24,6 +25,7 @@
 
 })(); // End of use strict
 
+// Form validation
 (() => {
   'use strict'
 
@@ -43,9 +45,10 @@
   })
 })();
 
+// Submit form on sort change
 (function() {
   "use strict"; // Start of use strict
 
-  document.querySelector('#sort-input').addEventListener('change', function() { this.form.submit(); });
+  document.querySelector('#sort-field').addEventListener('change', function() { this.form.submit(); });
 
 })(); // End of use strict
