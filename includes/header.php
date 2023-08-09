@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-  <title>Home - BookMyDoctor</title>
+  <title>BookMyDoctor</title>
   <link rel="canonical" href="https://bookmydoctor.infinityfreeapp.com/" />
   <meta property="og:url" content="https://bookmydoctor.infinityfreeapp.com/" />
   <meta name="twitter:description" content="BookMyDoctor lets you book an appointment with your preferred doctor online with little to no hassle. Whether you need a consultation, a check-up, or a treatment, you can find the right doctor for your needs and schedule a visit at your convenience. No more waiting in long queues, no more wasting time on phone calls, no more hassle. Just book, visit, and get well." />
