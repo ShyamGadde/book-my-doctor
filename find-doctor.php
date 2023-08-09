@@ -3,7 +3,7 @@
 
 <div style="margin-top: 80px; background: #24285b">
   <div class="container">
-    <form>
+    <form id="filter-form">
       <div class="row py-2 gy-2">
         <div class="col p-0 mt-0 d-flex align-items-center justify-content-between col-12 col-md-6">
           <div class="dropdown">
