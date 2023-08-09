@@ -186,7 +186,7 @@
         <?php if (empty($_SESSION['role'])) : ?>
           <a class="btn btn-primary shadow" role="button" href="login.php" style="border-radius: 5px">Login</a>
         <?php else : ?>
-          <a class="btn btn-primary shadow" role="button" href="#" style="border-radius: 5px">Logout</a>
+          <a class="btn btn-primary shadow" role="button" href="logout.php" style="border-radius: 5px">Logout</a>
         <?php endif; ?>
       </div>
     </div>
