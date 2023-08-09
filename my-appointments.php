@@ -1,4 +1,14 @@
-<?php include_once "includes/header.php" ?>
+<?php
+session_start();
+
+if (($_SESSION['role'] ?? '') != 'user') {
+  header("Location: login.php");
+  exit();
+}
+
+include_once "includes/header.php";
+?>
+
 
 <section style="margin-top: 80px">
   <div class="container my-4">

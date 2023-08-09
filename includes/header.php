@@ -154,7 +154,7 @@
             <a class="nav-link" href="find-doctor.php">Find Doctors</a>
           </li>
 
-          <?php if (($_SESSION['role'] ?? '') === 'patient') : ?>
+          <?php if (($_SESSION['role'] ?? '') === 'user') : ?>
             <li class="nav-item">
               <a class="nav-link" href="my-appointments.php">My Appointments</a>
             </li>
@@ -166,14 +166,9 @@
             </li>
           <?php endif; ?>
         </ul>
-        <div class="theme-switcher dropdown">
-          <a class="dropdown-toggle active" aria-expanded="false" data-bs-toggle="dropdown" href="#" style="
-                padding-right: 20px;
-                margin-top: 10px;
-                margin-bottom: 10px;
-                padding-top: 10px;
-                padding-bottom: 10px;
-              "><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-sun-fill mb-1">
+        <div class="theme-switcher dropdown mb-2 mb-md-0 me-3">
+          <a class="d-block dropdown-toggle active" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-sun-fill mb-1">
               <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"></path>
             </svg></a>
           <div class="dropdown-menu">
