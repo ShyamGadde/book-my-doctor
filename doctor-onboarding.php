@@ -29,13 +29,28 @@
               lowercase letter, and must be between 8 to 20 characters
             </div>
           </div>
+
           <div class="mb-3 form-floating">
-            <input class="shadow-sm form-control" type="password" id="confirm-pwd" name="password_repeat" placeholder="Repeat Password" autofocus="" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and between 8 to 20 characters" required="" style="border-radius: 5px" /><label class="form-label" for="confirm-pwd">Confirm Password</label>
-            <div class="invalid-feedback">
-              Password must contain at least one number and one uppercase and
-              lowercase letter, and must be between 8 to 20 characters
-            </div>
+            <input class="shadow-sm form-control" type="password" id="confirm-pwd" name="password_repeat" placeholder="Repeat Password" autofocus="" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="" style="border-radius: 5px" />
+            <label class="form-label" for="confirm-pwd">Confirm Password</label>
+            <div class="invalid-feedback">Passwords do not match!</div>
           </div>
+
+          <script>
+            const password = document.getElementById("pwd");
+            const confirmPassword = document.getElementById("confirm-pwd");
+
+            function validatePassword() {
+              if (password.value !== confirmPassword.value) {
+                confirmPassword.setCustomValidity("Passwords do not match!");
+              } else {
+                confirmPassword.setCustomValidity("");
+              }
+            }
+
+            password.onchange = validatePassword;
+            confirmPassword.onkeyup = validatePassword;
+          </script>
           <div class="mb-3 form-floating">
             <input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone Number" autofocus="" required="" minlength="10" maxlength="10" style="border-radius: 5px" /><label class="form-label">Phone</label>
             <div class="invalid-feedback">
@@ -80,14 +95,10 @@
               Please enter your years of experience
             </div>
           </div>
-          <div class="mb-3 input-group">
-            <span class="input-group-text" style="
-                border-top-left-radius: 5px;
-                border-bottom-left-radius: 5px;
-              ">DOB</span><input class="form-control" type="date" name="dob" required="" style="
-                border-top-right-radius: 5px;
-                border-bottom-right-radius: 5px;
-              " />
+
+          <div class="mb-3 form-floating">
+            <input class="form-control" type="date" name="dob" required="" style="border-radius: 5px" />
+            <label class="form-label">Date of Birth</label>
             <div class="invalid-feedback">Please enter your Date of Birth</div>
           </div>
 

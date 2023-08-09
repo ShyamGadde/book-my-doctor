@@ -63,16 +63,11 @@
           <div class="mb-3 form-floating">
             <input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone Number" autofocus="" required="" minlength="10" maxlength="10" style="border-radius: 5px" /><label class="form-label">Phone</label>
             <div class="invalid-feedback">Please enter a valid phone number</div>
-
           </div>
-          <div class="mb-3 input-group" style="border-radius: 5px">
-            <span class="input-group-text" style="
-                    border-top-left-radius: 5px;
-                    border-bottom-left-radius: 5px;
-                  ">DOB</span><input class="form-control" type="date" name="dob" required="" style="
-                    border-top-right-radius: 5px;
-                    border-bottom-right-radius: 5px;
-                  " />
+
+          <div class="mb-3 form-floating">
+            <input class="form-control" type="date" name="dob" required="" style="border-radius: 5px" />
+            <label class="form-label">Date of Birth</label>
             <div class="invalid-feedback">Please enter your Date of Birth</div>
           </div>
 
