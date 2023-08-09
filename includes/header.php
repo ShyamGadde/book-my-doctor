@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+session_start();
+$current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
+?>
 
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
@@ -135,10 +138,10 @@
 
 <body style="min-height: 100vh">
 
-  <pre style="margin-top: 80px;">
+  <!-- <pre style="margin-top: 80px;">
     <?= var_dump($_POST) ?>
     <?= var_dump($_GET) ?>
-  </pre>
+  </pre> -->
 
   <nav class="navbar navbar-expand-md fixed-top navbar-shrink py-3 navbar-light" id="mainNav">
     <div class="container">
@@ -148,21 +151,21 @@
       <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="navbar-nav mx-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.php">Home</a>
+            <a class="nav-link <?= $current_page === "index" ? "active" : "" ?>" href="index.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="find-doctor.php">Find Doctors</a>
+            <a class="nav-link <?= $current_page === "find-doctor" ? "active" : "" ?>" href="find-doctor.php">Find Doctors</a>
           </li>
 
           <?php if (($_SESSION['role'] ?? '') === 'user') : ?>
             <li class="nav-item">
-              <a class="nav-link" href="my-appointments.php">My Appointments</a>
+              <a class="nav-link <?= $current_page === "my-appointments" ? "active" : "" ?>" href="my-appointments.php">My Appointments</a>
             </li>
           <?php endif; ?>
 
           <?php if (($_SESSION['role'] ?? '') === 'doctor') : ?>
             <li class="nav-item">
-              <a class="nav-link" href="dashboard.php">Dashboard</a>
+              <a class="nav-link <?= $current_page === "dashboard" ? "active" : "" ?>" href="dashboard.php">Dashboard</a>
             </li>
           <?php endif; ?>
         </ul>
