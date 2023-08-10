@@ -152,9 +152,12 @@ $current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
           <li class="nav-item">
             <a class="nav-link <?= $current_page === "index" ? "active" : "" ?>" href="index.php">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link <?= $current_page === "find-doctor" ? "active" : "" ?>" href="find-doctor.php">Find Doctors</a>
-          </li>
+
+          <?php if (($_SESSION['role'] ?? '') !== 'doctor') : ?>
+            <li class="nav-item">
+              <a class="nav-link <?= $current_page === "find-doctor" ? "active" : "" ?>" href="find-doctor.php">Find Doctors</a>
+            </li>
+          <?php endif; ?>
 
           <?php if (($_SESSION['role'] ?? '') === 'user') : ?>
             <li class="nav-item">
