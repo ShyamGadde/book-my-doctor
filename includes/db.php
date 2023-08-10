@@ -19,15 +19,14 @@ class Database
     }
   }
 
-  public function getDoctors()
+  public function getDoctors(): array
   {
     $query = "SELECT * FROM doctors";
     $stmt = $this->conn->query($query);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-
-  public function filterDoctors(string $specialization, string $degree, string $gender, string $sortField, string $search)
+  public function filterDoctors(string $specialization, string $degree, string $gender, string $sortField, string $search): array
   {
     $sql = "SELECT * FROM doctors WHERE 1=1";
     $params = array();
@@ -66,6 +65,36 @@ class Database
     $stmt = $this->conn->prepare($sql);
     $stmt->execute($params);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function authenticate(string $email): bool|array
+  {
+    $response = array();
+
+    $query = "SELECT * FROM users WHERE email = ?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$email]);
+    $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($record) {
+      $response['role'] = 'user';
+      $response['record'] = $record;
+      return $response;
+    } else {
+      $query = "SELECT * FROM doctors WHERE email = ?";
+      $stmt = $this->conn->prepare($query);
+      $stmt->execute([$email]);
+      $record = $stmt->fetch(PDO::FETCH_ASSOC);
+
+      if ($record) {
+        $response['role'] = 'doctor';
+        $response['record'] = $record;
+        return $response;
+      } else {
+        // Email not found in either table, authentication failed
+        return false;
+      }
+    }
   }
 }
 

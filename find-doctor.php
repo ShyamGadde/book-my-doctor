@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once "includes/header.php";
 
 /** @var Database $db */
@@ -106,6 +108,31 @@ if (($_GET["filter"] ?? '') === "true") {
     </form>
   </div>
 </div>
+
+<script>
+  document.querySelector("#sort-field").addEventListener("change", function() {
+    this.form.submit();
+  });
+
+  const form = document.querySelector("#filter-form");
+  const searchParams = new URLSearchParams(window.location.search);
+
+  for (const [key, value] of searchParams.entries()) {
+    const input = form.querySelector(`[name="${key}"]`);
+    if (input) {
+      if (input.type === "radio") {
+        const radioInput = form.querySelector(
+          `[name="${key}"][value="${value}"]`
+        );
+        if (radioInput) {
+          radioInput.checked = true;
+        }
+      } else {
+        input.value = value;
+      }
+    }
+  }
+</script>
 
 <section class="mt-5">
   <div class="container text-center">

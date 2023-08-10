@@ -1,5 +1,4 @@
 <?php
-session_start();
 $current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
 ?>
 

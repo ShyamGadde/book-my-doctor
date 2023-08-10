@@ -52,36 +52,3 @@
     );
   });
 })();
-
-// Submit form on sort change
-(function () {
-  "use strict"; // Start of use strict
-
-  document.querySelector("#sort-field").addEventListener("change", function () {
-    this.form.submit();
-  });
-})(); // End of use strict
-
-// Persist filter and sort values across page loads
-(function () {
-  "use strict"; // Start of use strict
-
-  const form = document.querySelector("#filter-form");
-  const searchParams = new URLSearchParams(window.location.search);
-
-  for (const [key, value] of searchParams.entries()) {
-    const input = form.querySelector(`[name="${key}"]`);
-    if (input) {
-      if (input.type === "radio") {
-        const radioInput = form.querySelector(
-          `[name="${key}"][value="${value}"]`
-        );
-        if (radioInput) {
-          radioInput.checked = true;
-        }
-      } else {
-        input.value = value;
-      }
-    }
-  }
-})(); // End of use strict

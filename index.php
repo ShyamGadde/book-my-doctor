@@ -1,4 +1,8 @@
-<?php include_once 'includes/header.php'; ?>
+<?php
+session_start();
+
+include_once 'includes/header.php';
+?>
 
 
 <header class="pt-5 min-vh-100">

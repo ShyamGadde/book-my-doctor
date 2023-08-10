@@ -1,4 +1,16 @@
-<?php include_once "includes/header.php" ?>
+<?php
+session_start();
+
+if (($_SESSION['role'] ?? '') === 'doctor') {
+  header("Location: dashboard.php");
+  exit();
+} elseif (($_SESSION['role'] ?? '') === 'user') {
+  header("Location: my-appointments.php");
+  exit();
+}
+
+include_once "includes/header.php"
+?>
 
 
 <section class="py-4 py-md-5 my-5">
