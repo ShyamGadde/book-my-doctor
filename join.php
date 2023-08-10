@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $response = $db->createDoctor($fullname, $email, $password, $phone, $gender, $specialization, $degree, $experience);
     if ($response === false) {
-      header("Location: signup.php?error=1");
+      header("Location: join.php?error=1");
     } else {
       header("Location: login.php?success=1");
     }
@@ -48,6 +48,35 @@ include_once "includes/header.php"
 
 
 <section class="py-4 py-md-5 my-5">
+  <div class="toast-container position-fixed top-0 end-0 me-2 mt-2">
+    <div class="toast fade bg-danger-subtle" style="border-radius: 5px;" data-aos="fade-left" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <svg class="bd-placeholder-img me-2" style="border-radius: 5px;" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <rect width="100%" height="100%" fill="#007aff"></rect>
+        </svg>
+        <strong class="me-auto">BookMyDoctor</strong>
+        <!-- <small>11 mins ago</small> -->
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        There was an error creating your account. Please try again.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const url = new URL(window.location.href);
+      const params = new URLSearchParams(url.search);
+      const errorValue = params.get('error');
+      if (errorValue === '1') {
+        let toastElement = document.querySelector('.toast');
+        let toast = new bootstrap.Toast(toastElement);
+        toast.show();
+      }
+    });
+  </script>
+
   <div class="container py-md-5" data-aos="fade-up">
     <div class="row">
       <div class="col-md-6 text-center">
