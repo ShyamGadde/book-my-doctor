@@ -155,6 +155,14 @@ class Database
     $success = $stmt->execute([$fullname, $email, $hashed_password, $phone, $gender, $specialization, $degree, $experience]);
     return $success;
   }
+
+  public function createAppointment(int $userId, int $doctorId, string $date, string $time): bool
+  {
+    $query = "INSERT INTO appointments (user_id, doctor_id, date, time) VALUES (?, ?, ?, ?)";
+    $stmt = $this->conn->prepare($query);
+    $success = $stmt->execute([$userId, $doctorId, $date, $time]);
+    return $success;
+  }
 }
 
 

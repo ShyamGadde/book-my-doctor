@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+if (($_SESSION['role'] ?? '') === 'doctor') {
+  header("Location: dashboard.php");
+  exit();
+}
+
 include_once "includes/header.php";
 
 /** @var Database $db */
@@ -14,6 +19,35 @@ if (($_GET["filter"] ?? '') === "true") {
 ?>
 
 <div style="margin-top: 80px; background: #24285b">
+  <div class="toast-container position-fixed top-0 end-0 me-2 mt-2">
+    <div class="toast fade bg-danger-subtle" style="border-radius: 5px;" data-aos="fade-left" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <svg class="bd-placeholder-img me-2" style="border-radius: 5px;" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <rect width="100%" height="100%" fill="#007aff"></rect>
+        </svg>
+        <strong class="me-auto">BookMyDoctor</strong>
+        <!-- <small>11 mins ago</small> -->
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        There was an error while booking your appointment. Please try again.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const url = new URL(window.location.href);
+      const params = new URLSearchParams(url.search);
+      const errorValue = params.get('error');
+      if (errorValue === '1') {
+        let toastElement = document.querySelector('.toast');
+        let toast = new bootstrap.Toast(toastElement);
+        toast.show();
+      }
+    });
+  </script>
+
   <div class="container">
     <form id="filter-form">
       <input type="hidden" name="filter" value="true">
@@ -154,7 +188,8 @@ if (($_GET["filter"] ?? '') === "true") {
               </h6>
             </div>
             <div class="card-footer d-flex justify-content-between">
-              <a class="btn btn-info shadow rounded-pill" href="tel:<?= $doctor['phone'] ?>">Call</a><button class="btn btn-primary rounded-pill shadow" type="button" data-bs-toggle="modal" data-bs-target="#modal-1">
+              <a class="btn btn-info shadow rounded-pill" href="tel:<?= $doctor['phone'] ?>">Call</a>
+              <button class="btn btn-primary rounded-pill shadow book-appointment-btn" type="button" data-bs-toggle="modal" data-bs-target="#book-appointment-modal" data-doctor-id=<?= $doctor['id'] ?>>
                 Book Appointment
               </button>
             </div>
@@ -168,7 +203,7 @@ if (($_GET["filter"] ?? '') === "true") {
 
 
 <?php if (($_SESSION['role'] ?? '') === 'user') : ?>
-  <div class="modal fade" role="dialog" tabindex="-1" id="modal-1" data-bs-backdrop="static">
+  <div class="modal fade" role="dialog" tabindex="-1" id="book-appointment-modal" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
       <div class="modal-content rounded-4">
         <div class="modal-header">
@@ -177,6 +212,8 @@ if (($_GET["filter"] ?? '') === "true") {
         </div>
         <form action="book-appointment.php" method="post" class="needs-validation" novalidate>
           <div class="modal-body">
+            <input type="hidden" name="user_id" value="<?= $_SESSION['uid'] ?>">
+            <input type="hidden" name="doctor_id" id="doctor-id">
             <div class="input-group my-3">
               <span class="input-group-text" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">Date</span>
               <input class="form-control" type="date" name="date" required="" min="<?= date('Y-m-d'); ?>" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;" />
@@ -184,7 +221,7 @@ if (($_GET["filter"] ?? '') === "true") {
             </div>
             <div class="input-group my-3">
               <span class="input-group-text" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">Time</span>
-              <input class="form-control" type="time" name="date" required="" min="10:00" max="22:00" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;" />
+              <input class="form-control" type="time" name="time" required="" min="10:00" max="22:00" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;" />
               <div class="invalid-feedback">Please a choose a time between 10 AM and 10 PM</div>
             </div>
           </div>
@@ -197,8 +234,17 @@ if (($_GET["filter"] ?? '') === "true") {
     </div>
   </div>
 
+  <script>
+    document.querySelectorAll(".book-appointment-btn").forEach((btn) => {
+      btn.addEventListener("click", function() {
+        const doctorId = this.dataset.doctorId;
+        document.querySelector("#doctor-id").value = doctorId;
+      });
+    });
+  </script>
+
 <?php else : ?>
-  <div class="modal fade" role="dialog" tabindex="-1" id="modal-1" data-bs-backdrop="static">
+  <div class="modal fade" role="dialog" tabindex="-1" id="book-appointment-modal" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
       <div class="modal-content rounded-4">
         <div class="modal-header">
