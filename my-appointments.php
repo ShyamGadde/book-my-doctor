@@ -25,14 +25,15 @@ include_once "includes/header.php";
       <div data-aos="fade-up" data-aos-delay="150" class="text-center my-3" style="height: 250px">
         <img class="img-fluid h-100 rounded-circle" src="assets/img/illustrations/no-data.jpg" />
       </div>
+
     <?php else : ?>
       <div class="table-responsive" data-aos="fade-up" data-aos-delay="150">
         <table class="table table-hover table-striped">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Doctor</th>
+              <th class="col-4">Date</th>
+              <th class="col-4">Time</th>
+              <th class="col-4">Doctor</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">
@@ -58,14 +59,15 @@ include_once "includes/header.php";
       <div data-aos="fade-up" data-aos-delay="150" class="text-center my-3" style="height: 250px">
         <img class="img-fluid h-100 rounded-circle" src="assets/img/illustrations/no-data.jpg" />
       </div>
+
     <?php else : ?>
       <div class="table-responsive" data-aos="fade-up" data-aos-delay="150">
         <table class="table table-hover table-striped">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Doctor</th>
+              <th class="col-4">Date</th>
+              <th class="col-4">Time</th>
+              <th class="col-4">Doctor</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">

@@ -30,8 +30,8 @@ include_once "includes/header.php";
         <table class="table table-hover table-striped">
           <thead>
             <tr>
-              <th>Time</th>
-              <th>Patient</th>
+              <th class="col-6">Time</th>
+              <th class="col-6">Patient</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">
@@ -61,9 +61,9 @@ include_once "includes/header.php";
         <table class="table table-hover table-striped">
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Patient</th>
+              <th class="col-4">Date</th>
+              <th class="col-4">Time</th>
+              <th class="col-4">Patient</th>
             </tr>
           </thead>
           <tbody class="table-group-divider">
