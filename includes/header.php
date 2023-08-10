@@ -136,7 +136,7 @@ $current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
   <link rel="stylesheet" href="assets/css/Navbar-Right-Links-Dark-icons.css" />
 </head>
 
-<body style="min-height: 100vh">
+<body class="d-flex flex-column" style="min-height: 100vh">
 
   <!-- <pre style="margin-top: 80px;">
     <?= var_dump($_POST) ?>

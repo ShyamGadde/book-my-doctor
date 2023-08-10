@@ -1,9 +1,20 @@
-<?php include_once "includes/header.php" ?>
+<?php
+include_once "includes/header.php";
 
+/** @var Database $db */
+$db = require_once "includes/db.php";
+
+if (($_GET["filter"] ?? '') === "true") {
+  $doctors = $db->filterDoctors($_GET['specialization'], $_GET['degree'], $_GET["gender"], $_GET["sort-field"], $_GET["search"]);
+} else {
+  $doctors = $db->getDoctors();
+}
+?>
 
 <div style="margin-top: 80px; background: #24285b">
   <div class="container">
     <form id="filter-form">
+      <input type="hidden" name="filter" value="true">
       <div class="row py-2">
         <div class="col p-0 mt-0 mb-2 mb-md-0 d-flex align-items-center justify-content-between col-12 col-md-6">
           <div class="dropdown">
@@ -46,8 +57,8 @@
                 <div class="mb-3 form-floating">
                   <select class="form-select" id="gender" name="gender" autofocus="" style="border-radius: 5px">
                     <option selected value="">Choose Gender</option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
                   </select><label class="form-label" for="gender">Gender</label>
                 </div>
 
@@ -71,7 +82,7 @@
                       border-bottom-right-radius: 5px;
                     ">
                 <option value="relevance" selected="">Relevance</option>
-                <option value="name">Name</option>
+                <option value="fullname">Name</option>
                 <option value="experience">Experience</option>
               </select>
             </div>
@@ -99,103 +110,31 @@
 <section class="mt-5">
   <div class="container text-center">
     <div class="row row-cols-md-2 g-4">
-      <div class="col">
-        <div class="card h-100 border-dark shadow pt-4" data-aos="fade-up" style="border-radius: 5px">
-          <div>
-            <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/0.jpg" />
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Dr. Jane Doe</h4>
-            <h6 class="text-muted card-subtitle mb-2">
-              General Physician, MD
-            </h6>
-            <h6 class="text-muted card-subtitle mb-2">
-              18 years of experience overall
-            </h6>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <a class="btn btn-info shadow rounded-pill" href="tel:#">Call</a><button class="btn btn-primary rounded-pill shadow" type="button" data-bs-toggle="modal" data-bs-target="#modal-1">
-              Book Appointment
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 border-dark shadow pt-4" data-aos="fade-up" style="border-radius: 5px">
-          <div>
-            <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/0.jpg" />
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Dr. Jane Doe</h4>
-            <h6 class="text-muted card-subtitle mb-2">
-              General Physician, MD
-            </h6>
-            <h6 class="text-muted card-subtitle mb-2">
-              18 years of experience overall
-            </h6>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <a class="btn btn-info shadow rounded-pill" href="#">Call</a><a class="btn btn-primary shadow rounded-pill" href="#">Book Appointment</a>
+
+      <?php foreach ($doctors as $doctor) : ?>
+        <div class="col">
+          <div class="card h-100 border-dark shadow pt-4" data-aos="fade-up" style="border-radius: 5px">
+            <div>
+              <img class="rounded-circle" src="<?= $doctor['image_link'] ?>" />
+            </div>
+            <div class="card-body">
+              <h4 class="card-title">Dr. <?= $doctor['fullname'] ?></h4>
+              <h6 class="text-muted card-subtitle mb-2">
+                <?= $doctor['specialization'] ?>, <?= $doctor['degree'] ?>
+              </h6>
+              <h6 class="text-muted card-subtitle mb-2">
+                <?= $doctor['experience'] ?> years of experience overall
+              </h6>
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+              <a class="btn btn-info shadow rounded-pill" href="tel:<?= $doctor['phone'] ?>">Call</a><button class="btn btn-primary rounded-pill shadow" type="button" data-bs-toggle="modal" data-bs-target="#modal-1">
+                Book Appointment
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 border-dark shadow pt-4" data-aos="fade-up" style="border-radius: 5px">
-          <div>
-            <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/0.jpg" />
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Dr. Jane Doe</h4>
-            <h6 class="text-muted card-subtitle mb-2">
-              General Physician, MD
-            </h6>
-            <h6 class="text-muted card-subtitle mb-2">
-              18 years of experience overall
-            </h6>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <a class="btn btn-info shadow rounded-pill" href="#">Call</a><a class="btn btn-primary shadow rounded-pill" href="#">Book Appointment</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 border-dark shadow pt-4" data-aos="fade-up" style="border-radius: 5px">
-          <div>
-            <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/0.jpg" />
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Dr. Jane Doe</h4>
-            <h6 class="text-muted card-subtitle mb-2">
-              General Physician, MD
-            </h6>
-            <h6 class="text-muted card-subtitle mb-2">
-              18 years of experience overall
-            </h6>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <a class="btn btn-info shadow rounded-pill" href="#">Call</a><a class="btn btn-primary shadow rounded-pill" href="#">Book Appointment</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 border-dark shadow pt-4" data-aos="fade-up" style="border-radius: 5px">
-          <div>
-            <img class="rounded-circle" src="https://randomuser.me/api/portraits/women/0.jpg" />
-          </div>
-          <div class="card-body">
-            <h4 class="card-title">Dr. Jane Doe</h4>
-            <h6 class="text-muted card-subtitle mb-2">
-              General Physician, MD
-            </h6>
-            <h6 class="text-muted card-subtitle mb-2">
-              18 years of experience overall
-            </h6>
-          </div>
-          <div class="card-footer d-flex justify-content-between">
-            <a class="btn btn-info shadow rounded-pill" href="#">Call</a><a class="btn btn-primary shadow rounded-pill" href="#">Book Appointment</a>
-          </div>
-        </div>
-      </div>
+      <?php endforeach; ?>
+
     </div>
   </div>
 </section>
