@@ -25,6 +25,48 @@ class Database
     $stmt = $this->conn->query($query);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
+
+
+  public function filterDoctors(string $specialization, string $degree, string $gender, string $sortField, string $search)
+  {
+    $sql = "SELECT * FROM doctors WHERE 1=1";
+    $params = array();
+
+    if (!empty($specialization)) {
+      $sql .= " AND specialization = ?";
+      $params[] = $specialization;
+    }
+
+    if (!empty($degree)) {
+      $sql .= " AND degree = ?";
+      $params[] = $degree;
+    }
+
+    if (!empty($gender)) {
+      $sql .= " AND gender = ?";
+      $params[] = $gender;
+    }
+
+    if (!empty($search)) {
+      $sql .= " AND fullname LIKE ?";
+      $params[] = "%" . $search . "%";
+    }
+
+    switch ($sortField) {
+      case "fullname":
+        $sql .= " ORDER BY fullname ASC";
+        break;
+      case "experience":
+        $sql .= " ORDER BY experience DESC";
+        break;
+      default:
+        break;
+    }
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute($params);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
 }
 
 
