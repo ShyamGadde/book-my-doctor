@@ -128,6 +128,33 @@ class Database
     $stmt->execute([$userId, date('Y-m-d')]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public function userEmailExists(string $email): bool
+  {
+    $query = "SELECT COUNT(*) FROM (SELECT email FROM users UNION SELECT email FROM doctors) AS emails WHERE email = ?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$email]);
+    $count = $stmt->fetchColumn();
+    return $count > 0;
+  }
+
+  public function createUser(string $fullname, string $email, string $password, string $phone, string $dob, string $gender): bool
+  {
+    $query = "INSERT INTO users (fullname, email, password, phone, dob, gender) VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $this->conn->prepare($query);
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $success = $stmt->execute([$fullname, $email, $hashed_password, $phone, $dob, $gender]);
+    return $success;
+  }
+
+  public function createDoctor(string $fullname, string $email, string $password, string $phone, string $gender, string $specialization, string $degree, int $experience): bool
+  {
+    $query = "INSERT INTO doctors (fullname, email, password, phone, gender, specialization, degree, experience) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $this->conn->prepare($query);
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $success = $stmt->execute([$fullname, $email, $hashed_password, $phone, $gender, $specialization, $degree, $experience]);
+    return $success;
+  }
 }
 
 

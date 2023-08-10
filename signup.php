@@ -9,6 +9,37 @@ if (($_SESSION['role'] ?? '') === 'doctor') {
   exit();
 }
 
+/** @var Database $db */
+$db = require_once "includes/db.php";
+
+$email_feedback;
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+  if ($db->userEmailExists($email)) {
+    $email_feedback = "This email address is already associated with an account.";
+  } else {
+    $fullname = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $dob = filter_input(INPUT_POST, 'dob', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $gender = filter_input(INPUT_POST, 'gender', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+    // Validate the gender input against an array of valid values
+    $valid_genders = array('Male', 'Female', 'Other');
+    if (!in_array($gender, $valid_genders)) {
+      $gender = 'Other';
+    }
+
+    $response = $db->createUser($fullname, $email, $password, $phone, $dob, $gender);
+    if ($response === false) {
+      header("Location: signup.php?error=1");
+    } else {
+      header("Location: login.php?success=1");
+    }
+  }
+}
+
 include_once "includes/header.php"
 ?>
 
@@ -34,19 +65,19 @@ include_once "includes/header.php"
         </p>
         <form method="post" data-bs-theme="light" class="needs-validation" novalidate>
           <div class="mb-3 form-floating">
-            <input class="form-control" type="text" id="name" placeholder="Full Name" name="name" autofocus="" required="" style="border-radius: 5px" />
-            <label class="form-label" for="name">Full Name</label>
+            <input class="form-control" type="text" id="name" placeholder="Full Name" name="fullname" value="<?= $_POST['fullname'] ?? '' ?>" autofocus="" required="" style="border-radius: 5px" />
+            <label class="form-label" for="fullname">Full Name</label>
             <div class="invalid-feedback">Please enter your name</div>
 
           </div>
           <div class="mb-3 form-floating">
-            <input class="shadow-sm form-control" type="email" id="email" name="email" placeholder="Email" autofocus="" required="" pattern="^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" style="border-radius: 5px" />
+            <input class="shadow-sm form-control <?= $email_feedback ? 'is-invalid' : '' ?>" type="email" id="email" name="email" placeholder="Email" value="<?= $_POST['email'] ?? '' ?>" autofocus="" required="" pattern="^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" style="border-radius: 5px" />
             <label class="form-label" for="email">Email Address</label>
-            <div class="invalid-feedback">Please enter a valid email address</div>
+            <div class="invalid-feedback"><?= $email_feedback ?? 'Please enter a valid email address' ?></div>
 
           </div>
           <div class="mb-3 form-floating">
-            <input class="shadow-sm form-control" type="password" id="pwd" name="password" placeholder="Password" autofocus="" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and must be between 8 to 20 characters" required="" style="border-radius: 5px" />
+            <input class="shadow-sm form-control" type="password" id="pwd" name="password" placeholder="Password" value="<?= $_POST['password'] ?? '' ?>" autofocus="" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and must be between 8 to 20 characters" required="" style="border-radius: 5px" />
             <label class="form-label" for="pwd">Password</label>
             <div class="invalid-feedback">Password must contain at least one number and one uppercase and lowercase letter, and must be between 8 to 20 characters</div>
           </div>
@@ -73,21 +104,22 @@ include_once "includes/header.php"
           </script>
 
           <div class="mb-3 form-floating">
-            <input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone Number" autofocus="" required="" minlength="10" maxlength="10" style="border-radius: 5px" /><label class="form-label">Phone</label>
+            <input class="form-control" type="tel" id="phone" name="phone" placeholder="Phone Number" value="<?= $_POST['phone'] ?? '' ?>" autofocus="" required="" minlength="10" maxlength="10" style="border-radius: 5px" /><label class="form-label">Phone</label>
             <div class="invalid-feedback">Please enter a valid phone number</div>
           </div>
 
           <div class="mb-3 form-floating">
-            <input class="form-control" type="date" name="dob" required="" style="border-radius: 5px" />
+            <input class="form-control" type="date" name="dob" value="<?= $_POST['dob'] ?? '' ?>" required="" max="<?= date('Y-m-d') ?>" style="border-radius: 5px" />
             <label class="form-label">Date of Birth</label>
             <div class="invalid-feedback">Please enter your Date of Birth</div>
           </div>
 
           <div class="mb-3 form-floating">
             <select class="form-select" id="gender" name="gender" autofocus="" required="" style="border-radius: 5px">
-              <option selected value="">Select your Gender</option>
-              <option value="M">Male</option>
-              <option value="F">Female</option>
+              <option value="" <?= (!isset($_POST['gender'])) ? 'selected' : '' ?>>Select your Gender</option>
+              <option value="Male" <?= (isset($_POST['gender']) && $_POST['gender'] == 'Male') ? 'selected' : '' ?>>Male</option>
+              <option value="Female" <?= (isset($_POST['gender']) && $_POST['gender'] == 'Female') ? 'selected' : '' ?>>Female</option>
+              <option value="Other" <?= (isset($_POST['gender']) && $_POST['gender'] == 'Other') ? 'selected' : '' ?>>Other</option>
             </select><label class="form-label" for="gender">Gender</label>
             <div class="invalid-feedback">
               Please select your Gender
