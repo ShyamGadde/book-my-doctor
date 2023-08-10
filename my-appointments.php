@@ -17,6 +17,35 @@ include_once "includes/header.php";
 
 
 <section style="margin-top: 80px">
+  <div class="toast-container position-fixed top-0 end-0 me-2 mt-2">
+    <div class="toast fade" style="border-radius: 5px;" data-aos="fade-left" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <svg class="bd-placeholder-img me-2" style="border-radius: 5px;" width="20" height="20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <rect width="100%" height="100%" fill="#007aff"></rect>
+        </svg>
+        <strong class="me-auto">BookMyDoctor</strong>
+        <!-- <small>11 mins ago</small> -->
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Congratulations! Your appointment has been booked successfully.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const url = new URL(window.location.href);
+      const params = new URLSearchParams(url.search);
+      const successValue = params.get('success');
+      if (successValue === '1') {
+        let toastElement = document.querySelector('.toast');
+        let toast = new bootstrap.Toast(toastElement);
+        toast.show();
+      }
+    });
+  </script>
+
   <div class="container my-4">
     <h2 data-aos="fade-up" class="mb-4" style="font-weight: bold">
       <span class="underline">Upcoming</span>&nbsp;Appointments
