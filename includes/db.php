@@ -96,6 +96,22 @@ class Database
       }
     }
   }
+
+  public function getDoctorTodaysAppointments(int $doctorId): array
+  {
+    $query = "SELECT users.fullname as patient_name, appointments.date, appointments.time FROM appointments JOIN users ON appointments.user_id = users.id WHERE appointments.doctor_id = ? AND appointments.date = ? ORDER BY appointments.time ASC";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$doctorId, date('Y-m-d')]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function getDoctorUpcomingAppointments(int $doctorId): array
+  {
+    $query = "SELECT users.fullname as patient_name, appointments.date, appointments.time FROM appointments JOIN users ON appointments.user_id = users.id WHERE appointments.doctor_id = ? AND appointments.date > ? ORDER BY appointments.date ASC, appointments.time ASC";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$doctorId, date('Y-m-d')]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
 }
 
 
