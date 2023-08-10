@@ -112,6 +112,22 @@ class Database
     $stmt->execute([$doctorId, date('Y-m-d')]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  public function getUserUpcomingAppointments(int $userId): array
+  {
+    $query = "SELECT doctors.fullname as doctor_name, appointments.date, appointments.time FROM appointments JOIN doctors ON appointments.doctor_id = doctors.id WHERE appointments.user_id = ? AND appointments.date >= ? ORDER BY appointments.date ASC, appointments.time ASC";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$userId, date('Y-m-d')]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public function getUserAppointmentHistory(int $userId): array
+  {
+    $query = "SELECT doctors.fullname as doctor_name, appointments.date, appointments.time FROM appointments JOIN doctors ON appointments.doctor_id = doctors.id WHERE appointments.user_id = ? AND appointments.date < ? ORDER BY appointments.date DESC, appointments.time DESC";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$userId, date('Y-m-d')]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
 }
 
 
