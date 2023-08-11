@@ -19,6 +19,11 @@ class Database
     }
   }
 
+  public function __destruct()
+  {
+    $this->conn = null;
+  }
+
   public function getDoctors(): array
   {
     $query = "SELECT * FROM doctors";
