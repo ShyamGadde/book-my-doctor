@@ -8,14 +8,14 @@ include_once 'includes/header.php';
 <main class="pt-5 min-vh-100">
 
   <div class="container pt-4 pt-xl-5 d-flex flex-column mt-5">
-    <div class="row pt-2" data-aos="fade-up">
+    <div class="row pt-2">
       <div class="col-md-8 text-center text-md-start mx-auto">
         <div class="text-center">
           <h1 class="display-4 fw-bold mb-5" data-aos="fade-up">
             BookMyDoctor: Your&nbsp;<br />health&nbsp;<span class="underline pb-2">partner</span>&nbsp;online
           </h1>
 
-          <p class="fs-5 text-muted mb-5" data-aos="fade-up" data-aos-delay="200">
+          <p class="fs-5 text-muted mb-5" data-aos="fade-up" data-aos-delay="50">
             BookMyDoctor lets you book an appointment with your preferred
             doctor online with little to no hassle. Whether you need a
             consultation, a check-up, or a treatment, you can find the right
@@ -24,7 +24,7 @@ include_once 'includes/header.php';
             calls, no more hassle. Just book, visit, and get well.
           </p>
 
-          <div data-aos="fade-up" data-aos-delay="400" class="mt-5">
+          <div data-aos="fade-up" data-aos-delay="100" class="mt-5">
             <a class="align-items-center btn btn-primary rounded-pill d-inline-flex align-items-center shadow" href="find-doctor.php">Find a Doctor!&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-chevron-right">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <polyline points="9 6 15 12 9 18"></polyline>
@@ -39,14 +39,14 @@ include_once 'includes/header.php';
 <section>
   <div class="container py-4 py-xl-5">
 
-    <h2 class="text-center" data-aos="fade-up" style="font-weight: bold; margin-top: 26px; margin-bottom: 40px">
+    <h2 class="text-center mt-5 mb-5" data-aos="fade-up" data-aos-delay="100" style="font-weight: bold">
       <span class="underline pb-2">Services</span>
     </h2>
 
     <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center" style="text-align: center">
 
-      <div class="col" data-aos="fade-up">
-        <div class="card border-light border-1 d-flex justify-content-center p-4" style="height: 100%; border-width: 1px; border-radius: 5px">
+      <div class="col" data-aos="fade-up" data-aos-delay="100">
+        <div class="card border-light border-1 d-flex justify-content-center p-2" style="height: 100%; border-radius: 5px">
           <div class="card-body">
             <img class="img-fluid rounded-circle mb-3" width="200" height="200" src="assets/img/illustrations/book-appointment.jpg" style="width: 200px; height: 200px" />
             <div>
@@ -61,7 +61,7 @@ include_once 'includes/header.php';
       </div>
 
       <div class="col" data-aos="fade-up" data-aos-delay="150">
-        <div class="card border-light border-1 d-flex justify-content-center p-4" style="height: 100%; border-width: 1px; border-radius: 5px">
+        <div class="card border-light border-1 d-flex justify-content-center p-2" style="height: 100%; border-radius: 5px">
           <div class="card-body">
             <img class="img-fluid rounded-circle mb-3" width="200" height="200" src="assets/img/illustrations/doctor.jpg" style="width: 200px; height: 200px" />
             <div>
@@ -75,10 +75,10 @@ include_once 'includes/header.php';
         </div>
       </div>
 
-      <div class="col" data-aos="fade-up" data-aos-delay="300">
-        <div class="card border-light border-1 d-flex justify-content-center p-4" style="height: 100%; border-width: 1px; border-radius: 5px">
+      <div class="col" data-aos="fade-up" data-aos-delay="200">
+        <div class="card border-light border-1 d-flex justify-content-center p-2" style="height: 100%; border-radius: 5px">
           <div class="card-body">
-            <img class="img-fluid mb-3 rounded-circle" width="218" height="164" src="assets/img/illustrations/medical-record.jpg" style="width: 200px; height: 200px" />
+            <img class="img-fluid mb-3 rounded-circle" width="200" height="200" src="assets/img/illustrations/medical-record.jpg" style="width: 200px; height: 200px" />
             <div>
               <h4 class="fw-bold">24/7 Access to Medical Records</h4>
               <p class="text-muted">
@@ -131,7 +131,7 @@ include_once 'includes/header.php';
   </div>
 </section>
 
-<section class="py-5">
+<section>
   <div class="container py-5">
     <div class="row mb-5">
       <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -143,7 +143,7 @@ include_once 'includes/header.php';
 
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 d-sm-flex justify-content-sm-center">
 
-      <div class="col mb-4" data-aos="fade-up" data-aos-delay="100">
+      <div class="col mb-4" data-aos="fade-up" data-aos-delay="50">
         <div class="d-flex align-items-center align-items-sm-start">
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-quote fs-1 text-warning flex-shrink-0">
             <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"></path>
@@ -166,7 +166,7 @@ include_once 'includes/header.php';
         </div>
       </div>
 
-      <div class="col mb-4" data-aos="fade-up" data-aos-delay="200">
+      <div class="col mb-4" data-aos="fade-up" data-aos-delay="100">
         <div class="d-flex align-items-center align-items-sm-start">
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-quote fs-1 text-warning flex-shrink-0">
             <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"></path>
@@ -189,7 +189,7 @@ include_once 'includes/header.php';
         </div>
       </div>
 
-      <div class="col mb-4" data-aos="fade-up" data-aos-delay="300">
+      <div class="col mb-4" data-aos="fade-up" data-aos-delay="150">
         <div class="d-flex align-items-center align-items-sm-start">
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-quote fs-1 text-warning flex-shrink-0">
             <path d="M12 12a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1h-1.388c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 9 7.558V11a1 1 0 0 0 1 1h2Zm-6 0a1 1 0 0 0 1-1V8.558a1 1 0 0 0-1-1H4.612c0-.351.021-.703.062-1.054.062-.372.166-.703.31-.992.145-.29.331-.517.559-.683.227-.186.516-.279.868-.279V3c-.579 0-1.085.124-1.52.372a3.322 3.322 0 0 0-1.085.992 4.92 4.92 0 0 0-.62 1.458A7.712 7.712 0 0 0 3 7.558V11a1 1 0 0 0 1 1h2Z"></path>
@@ -215,7 +215,7 @@ include_once 'includes/header.php';
   </div>
 </section>
 
-<section class="py-5">
+<section class="pb-5">
   <div class="container" data-aos="fade-up">
     <div class="text-white bg-primary border rounded border-primary d-flex flex-column justify-content-between align-items-center flex-lg-row p-4 p-lg-5" data-bs-theme="light">
       <div class="text-center text-lg-start py-3 py-lg-1">
@@ -242,12 +242,12 @@ include_once 'includes/header.php';
   </div>
 </section>
 
-<section class="py-4 py-xl-5 mb-5">
+<section class="py-4 py-xl-5">
   <div class="container" data-aos="fade-up">
     <div class="row mb-2">
       <div class="col-md-8 col-xl-6 text-center mx-auto">
         <h2 class="display-6 fw-bold mb-5">
-          <span class="pb-3 underline">FAQ<br /></span>
+          <span class="pb-2 underline">FAQ<br /></span>
         </h2>
       </div>
     </div>
@@ -324,12 +324,12 @@ include_once 'includes/header.php';
   </div>
 </section>
 
-<section class="py-5">
-  <div class="container py-5" data-aos="fade-up">
+<section>
+  <div class="container pt-5" data-aos="fade-up">
     <div class="row">
       <div class="col-md-8 col-xl-6 text-center mx-auto">
         <h2 class="display-6 fw-bold mb-4">
-          Got any <span class="underline">questions</span>?
+          Got any <span class="pb-2 underline">questions</span>?
         </h2>
         <p class="text-muted">
           Our team is always here to help. Send us a message and we'll get
