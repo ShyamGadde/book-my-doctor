@@ -1,29 +1,30 @@
 <?php
-
 class Database
 {
   private string $host = "localhost";
   private string $username = "root";
   private string $password = "";
   private string $dbname = "bookmydoctor";
-  private \PDO $conn;
+  private mysqli $conn;
 
   public function __construct()
   {
-    try {
-      $dsn = "mysql:host={$this->host};dbname={$this->dbname}";
-      $this->conn = new PDO($dsn, $this->username, $this->password);
-      $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    } catch (PDOException $e) {
-      echo "Connection failed: " . $e->getMessage();
+    $this->conn = new mysqli($this->host, $this->username, $this->password, $this->dbname);
+    if ($this->conn->connect_error) {
+      die("Connection failed: " . $this->conn->connect_error);
     }
+  }
+
+  public function __destruct()
+  {
+    $this->conn->close();
   }
 
   public function getDoctors(): array
   {
     $query = "SELECT * FROM doctors";
-    $stmt = $this->conn->query($query);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $result = $this->conn->query($query);
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 
   public function filterDoctors(string $specialization, string $degree, string $gender, string $sortField, string $search): array
@@ -63,8 +64,13 @@ class Database
     }
 
     $stmt = $this->conn->prepare($sql);
-    $stmt->execute($params);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    if (!empty($params)) {
+      $types = str_repeat('s', count($params));
+      $stmt->bind_param($types, ...$params);
+    }
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 
   public function authenticate(string $email): bool|array
@@ -73,8 +79,10 @@ class Database
 
     $query = "SELECT * FROM users WHERE email = ?";
     $stmt = $this->conn->prepare($query);
-    $stmt->execute([$email]);
-    $record = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $record = $result->fetch_assoc();
 
     if ($record) {
       $response['role'] = 'user';
@@ -83,8 +91,10 @@ class Database
     } else {
       $query = "SELECT * FROM doctors WHERE email = ?";
       $stmt = $this->conn->prepare($query);
-      $stmt->execute([$email]);
-      $record = $stmt->fetch(PDO::FETCH_ASSOC);
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $record = $result->fetch_assoc();
 
       if ($record) {
         $response['role'] = 'doctor';
@@ -101,40 +111,50 @@ class Database
   {
     $query = "SELECT users.fullname as patient_name, appointments.date, appointments.time FROM appointments JOIN users ON appointments.user_id = users.id WHERE appointments.doctor_id = ? AND appointments.date = ? ORDER BY appointments.time ASC";
     $stmt = $this->conn->prepare($query);
-    $stmt->execute([$doctorId, date('Y-m-d')]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->bind_param("is", $doctorId, date('Y-m-d'));
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 
   public function getDoctorUpcomingAppointments(int $doctorId): array
   {
     $query = "SELECT users.fullname as patient_name, appointments.date, appointments.time FROM appointments JOIN users ON appointments.user_id = users.id WHERE appointments.doctor_id = ? AND appointments.date > ? ORDER BY appointments.date ASC, appointments.time ASC";
     $stmt = $this->conn->prepare($query);
-    $stmt->execute([$doctorId, date('Y-m-d')]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->bind_param("is", $doctorId, date('Y-m-d'));
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 
   public function getUserUpcomingAppointments(int $userId): array
   {
     $query = "SELECT doctors.fullname as doctor_name, appointments.date, appointments.time FROM appointments JOIN doctors ON appointments.doctor_id = doctors.id WHERE appointments.user_id = ? AND appointments.date >= ? ORDER BY appointments.date ASC, appointments.time ASC";
     $stmt = $this->conn->prepare($query);
-    $stmt->execute([$userId, date('Y-m-d')]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->bind_param("is", $userId, date('Y-m-d'));
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 
   public function getUserAppointmentHistory(int $userId): array
   {
     $query = "SELECT doctors.fullname as doctor_name, appointments.date, appointments.time FROM appointments JOIN doctors ON appointments.doctor_id = doctors.id WHERE appointments.user_id = ? AND appointments.date < ? ORDER BY appointments.date DESC, appointments.time DESC";
     $stmt = $this->conn->prepare($query);
-    $stmt->execute([$userId, date('Y-m-d')]);
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->bind_param("is", $userId, date('Y-m-d'));
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
   }
 
   public function userEmailExists(string $email): bool
   {
     $query = "SELECT COUNT(*) FROM (SELECT email FROM users UNION SELECT email FROM doctors) AS emails WHERE email = ?";
     $stmt = $this->conn->prepare($query);
-    $stmt->execute([$email]);
-    $count = $stmt->fetchColumn();
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $count = $result->fetch_row()[0];
     return $count > 0;
   }
 
@@ -143,7 +163,8 @@ class Database
     $query = "INSERT INTO users (fullname, email, password, phone, dob, gender) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $this->conn->prepare($query);
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $success = $stmt->execute([$fullname, $email, $hashed_password, $phone, $dob, $gender]);
+    $stmt->bind_param("ssssss", $fullname, $email, $hashed_password, $phone, $dob, $gender);
+    $success = $stmt->execute();
     return $success;
   }
 
@@ -152,7 +173,8 @@ class Database
     $query = "INSERT INTO doctors (fullname, email, password, phone, gender, specialization, degree, experience) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $this->conn->prepare($query);
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $success = $stmt->execute([$fullname, $email, $hashed_password, $phone, $gender, $specialization, $degree, $experience]);
+    $stmt->bind_param("sssssssi", $fullname, $email, $hashed_password, $phone, $gender, $specialization, $degree, $experience);
+    $success = $stmt->execute();
     return $success;
   }
 
@@ -160,10 +182,10 @@ class Database
   {
     $query = "INSERT INTO appointments (user_id, doctor_id, date, time) VALUES (?, ?, ?, ?)";
     $stmt = $this->conn->prepare($query);
-    $success = $stmt->execute([$userId, $doctorId, $date, $time]);
+    $stmt->bind_param("iiss", $userId, $doctorId, $date, $time);
+    $success = $stmt->execute();
     return $success;
   }
 }
-
 
 return new Database();
