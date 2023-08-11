@@ -131,7 +131,6 @@ $current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
-  <link rel=" manifest" href="manifest.json" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Almendra+SC&amp;display=swap" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Armata&amp;display=swap" />
