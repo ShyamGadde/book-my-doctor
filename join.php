@@ -48,7 +48,7 @@ include_once "includes/header.php"
 ?>
 
 
-<section class="py-4 py-md-5 my-5">
+<section style="margin-top: 80px;">
   <div class="toast-container position-fixed top-0 end-0 me-2 mt-2">
     <div class="toast fade bg-danger-subtle" style="border-radius: 5px;" data-aos="fade-left" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
@@ -85,7 +85,7 @@ include_once "includes/header.php"
         <img class="img-fluid w-100" src="assets/img/illustrations/register.svg" />
       </div>
 
-      <div class="col-md-5 col-xl-4 text-center text-md-start">
+      <div class="col-md-5 text-center text-md-start">
 
         <h2 class="display-6 fw-bold mb-5" style="margin-bottom: 0">
           <span class="underline pb-1"><strong>Join BookMyDoctor</strong></span>

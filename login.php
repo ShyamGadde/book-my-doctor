@@ -41,7 +41,7 @@ include_once "includes/header.php"
 ?>
 
 
-<section class="py-4 py-md-5 my-5">
+<section style="margin-top: 80px;">
   <div class="toast-container position-fixed top-0 end-0 me-2 mt-2">
     <div class="toast fade" style="border-radius: 5px;" data-aos="fade-left" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
