@@ -136,12 +136,6 @@ $current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
 </head>
 
 <body class="d-flex flex-column" style="min-height: 100vh">
-
-  <!-- <pre style="margin-top: 80px;">
-    <?= var_dump($_POST) ?>
-    <?= var_dump($_GET) ?>
-  </pre> -->
-
   <nav class="navbar navbar-expand-md fixed-top navbar-shrink py-3 navbar-light" id="mainNav">
     <div class="container">
       <a class="navbar-brand d-flex align-items-center" href="/"><span style="font-family: Armata, sans-serif">BookMyDoctor</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
