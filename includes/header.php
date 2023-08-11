@@ -12,11 +12,11 @@ $current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
   <link rel="canonical" href="https://bookmydoctor.infinityfreeapp.com/" />
   <meta property="og:url" content="https://bookmydoctor.infinityfreeapp.com/" />
   <meta name="twitter:description" content="BookMyDoctor lets you book an appointment with your preferred doctor online with little to no hassle. Whether you need a consultation, a check-up, or a treatment, you can find the right doctor for your needs and schedule a visit at your convenience. No more waiting in long queues, no more wasting time on phone calls, no more hassle. Just book, visit, and get well." />
-  <meta name="twitter:image" content="https://bookmydoctor.infinityfreeapp.com/assets/img/bmd_icon.png" />
+  <meta name="twitter:image" content="https://bookmydoctor.infinityfreeapp.com/android-chrome-192x192.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta property="og:type" content="website" />
   <meta name="description" content="BookMyDoctor lets you book an appointment with your preferred doctor online with little to no hassle. Whether you need a consultation, a check-up, or a treatment, you can find the right doctor for your needs and schedule a visit at your convenience. No more waiting in long queues, no more wasting time on phone calls, no more hassle. Just book, visit, and get well." />
-  <meta property="og:image" content="https://bookmydoctor.infinityfreeapp.com/assets/img/bmd_icon.png" />
+  <meta property="og:image" content="https://bookmydoctor.infinityfreeapp.com/android-chrome-192x192.png" />
   <meta name="twitter:title" content="BookMyDoctor" />
   <script type="application/ld+json">
     {
@@ -121,11 +121,15 @@ $current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
       });
     })();
   </script>
-  <link rel="icon" type="image/png" sizes="206x169" href="assets/img/bmd_fav.png" />
-  <link rel="icon" type="image/png" sizes="206x169" href="assets/img/bmd_fav.png" />
-  <link rel="icon" type="image/png" sizes="206x169" href="assets/img/bmd_fav.png" />
-  <link rel="icon" type="image/png" sizes="206x169" href="assets/img/bmd_fav.png" />
-  <link rel="icon" type="image/png" sizes="496x364" href="assets/img/bmd_icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="apple-mobile-web-app-title" content="BookMyDoctor">
+  <meta name="application-name" content="BookMyDoctor">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
   <link rel=" manifest" href="manifest.json" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap" />
@@ -138,11 +142,16 @@ $current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
 <body class="d-flex flex-column" style="min-height: 100vh">
   <nav class="navbar navbar-expand-md fixed-top navbar-shrink py-3 navbar-light" id="mainNav">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="/"><span style="font-family: Armata, sans-serif">BookMyDoctor</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
+
+      <a class="navbar-brand d-flex align-items-center" href="/"><span style="font-family: Armata, sans-serif">BookMyDoctor</span></a>
+
+      <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
         <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="navbar-nav mx-auto">
+
           <li class="nav-item">
             <a class="nav-link <?= $current_page === "index" ? "active" : "" ?>" href="index.php">Home</a>
           </li>
@@ -164,7 +173,9 @@ $current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
               <a class="nav-link <?= $current_page === "dashboard" ? "active" : "" ?>" href="dashboard.php">Dashboard</a>
             </li>
           <?php endif; ?>
+
         </ul>
+
         <div class="theme-switcher dropdown mb-2 mb-md-0 me-3">
           <a class="d-block dropdown-toggle active" aria-expanded="false" data-bs-toggle="dropdown" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-sun-fill mb-1">
@@ -187,6 +198,7 @@ $current_page = pathinfo($_SERVER['PHP_SELF'], PATHINFO_FILENAME);
         <?php else : ?>
           <a class="btn btn-primary shadow" role="button" href="logout.php" style="border-radius: 5px">Logout</a>
         <?php endif; ?>
+
       </div>
     </div>
   </nav>
