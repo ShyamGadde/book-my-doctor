@@ -88,7 +88,7 @@ include_once "includes/header.php"
       <div class="col-md-5 text-center text-md-start">
 
         <h2 class="display-6 fw-bold mb-5" style="margin-bottom: 0">
-          <span class="underline pb-1"><strong>Join BookMyDoctor</strong></span>
+          <span class="underline pb-2"><strong>Join BookMyDoctor</strong></span>
         </h2>
 
         <form class="needs-validation" method="post" data-bs-theme="light" novalidate="">

@@ -81,7 +81,7 @@ include_once "includes/header.php"
       <div class="col-md-5 col-xl-4 text-center text-md-start">
 
         <h2 class="display-6 fw-bold mb-5">
-          <span class="underline pb-1"><strong>Login</strong><br /></span>
+          <span class="underline pb-2"><strong>Login</strong><br /></span>
         </h2>
 
         <form method="post" data-bs-theme="light" class="needs-validation" novalidate>

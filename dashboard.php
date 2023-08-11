@@ -20,7 +20,7 @@ include_once "includes/header.php";
   <div class="container my-4">
 
     <h2 data-aos="fade-up" class="mb-4" style="font-weight: bold">
-      <span class="underline">Today's</span>&nbsp;Appointments
+      <span class="pb-2 underline">Today's</span>&nbsp;Appointments
     </h2>
 
     <?php if (empty($todays_appointments)) : ?>
@@ -62,7 +62,7 @@ include_once "includes/header.php";
 <section>
   <div class="container my-4">
     <h2 data-aos="fade-up" class="mb-4" style="font-weight: bold">
-      <span class="underline">Upcoming</span>&nbsp;Appointments
+      <span class="pb-2 underline">Upcoming</span>&nbsp;Appointments
     </h2>
 
     <?php if (empty($upcoming_appointments)) : ?>

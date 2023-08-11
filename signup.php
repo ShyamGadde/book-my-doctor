@@ -84,7 +84,7 @@ include_once "includes/header.php"
 
       <div class="col-md-5 col-xl-4 text-center text-md-start">
         <h2 class="display-6 fw-bold" style="margin-bottom: 0">
-          <span class="underline pb-1"><strong>Sign up</strong></span>
+          <span class="underline pb-2"><strong>Sign up</strong></span>
         </h2>
 
         <p class="text-muted mb-5 mt-3">
