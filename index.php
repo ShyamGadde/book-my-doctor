@@ -95,7 +95,7 @@ include_once 'includes/header.php';
 </section>
 
 <section class="py-4 py-xl-5">
-  <div class="container" data-aos="fade-left">
+  <div class="container" data-aos="fade-up">
     <div class="bg-primary border rounded border-0 border-primary overflow-hidden">
       <div class="row g-0">
         <div class="col">
@@ -216,7 +216,7 @@ include_once 'includes/header.php';
 </section>
 
 <section class="py-5">
-  <div class="container" data-aos="fade-left">
+  <div class="container" data-aos="fade-up">
     <div class="text-white bg-primary border rounded border-primary d-flex flex-column justify-content-between align-items-center flex-lg-row p-4 p-lg-5" data-bs-theme="light">
       <div class="text-center text-lg-start py-3 py-lg-1">
         <h2 class="fw-bold mb-2">Subscribe to our newsletter</h2>
