@@ -11,7 +11,7 @@ $db = require_once "includes/db.php";
 $response = $db->createAppointment($user_id, $doctor_id, $date, $time);
 
 if ($response === false) {
-  header("Location: book-appointment.php?error=1");
+  header("Location: find-doctor.php?error=1");
 } else {
   header("Location: my-appointments.php?success=1");
 }
