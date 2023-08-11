@@ -5,7 +5,8 @@ include_once 'includes/header.php';
 ?>
 
 
-<header class="pt-5 min-vh-100">
+<main class="pt-5 min-vh-100">
+
   <div class="container pt-4 pt-xl-5 d-flex flex-column mt-5">
     <div class="row pt-2" data-aos="fade-up">
       <div class="col-md-8 text-center text-md-start mx-auto">
@@ -13,6 +14,7 @@ include_once 'includes/header.php';
           <h1 class="display-4 fw-bold mb-5" data-aos="fade-up">
             BookMyDoctor: Your&nbsp;<br />health&nbsp;<span class="underline pb-2">partner</span>&nbsp;online
           </h1>
+
           <p class="fs-5 text-muted mb-5" data-aos="fade-up" data-aos-delay="200">
             BookMyDoctor lets you book an appointment with your preferred
             doctor online with little to no hassle. Whether you need a
@@ -21,6 +23,7 @@ include_once 'includes/header.php';
             No more waiting in long queues, no more wasting time on phone
             calls, no more hassle. Just book, visit, and get well.
           </p>
+
           <div data-aos="fade-up" data-aos-delay="400" class="mt-5">
             <a class="align-items-center btn btn-primary rounded-pill d-inline-flex align-items-center shadow" href="find-doctor.php">Find a Doctor!&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-chevron-right">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -31,13 +34,17 @@ include_once 'includes/header.php';
       </div>
     </div>
   </div>
-</header>
+</main>
+
 <section>
   <div class="container py-4 py-xl-5">
-    <h2 class="text-center" style="font-weight: bold; margin-top: 26px; margin-bottom: 22px">
+
+    <h2 class="text-center" data-aos="fade-up" style="font-weight: bold; margin-top: 26px; margin-bottom: 40px">
       <span class="underline pb-2">Services</span>
     </h2>
+
     <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center" style="text-align: center">
+
       <div class="col" data-aos="fade-up">
         <div class="card border-light border-1 d-flex justify-content-center p-4" style="height: 100%; border-width: 1px; border-radius: 5px">
           <div class="card-body">
@@ -52,6 +59,7 @@ include_once 'includes/header.php';
           </div>
         </div>
       </div>
+
       <div class="col" data-aos="fade-up" data-aos-delay="150">
         <div class="card border-light border-1 d-flex justify-content-center p-4" style="height: 100%; border-width: 1px; border-radius: 5px">
           <div class="card-body">
@@ -66,6 +74,7 @@ include_once 'includes/header.php';
           </div>
         </div>
       </div>
+
       <div class="col" data-aos="fade-up" data-aos-delay="300">
         <div class="card border-light border-1 d-flex justify-content-center p-4" style="height: 100%; border-width: 1px; border-radius: 5px">
           <div class="card-body">
@@ -84,6 +93,7 @@ include_once 'includes/header.php';
     </div>
   </div>
 </section>
+
 <section class="py-4 py-xl-5">
   <div class="container" data-aos="fade-left">
     <div class="bg-primary border rounded border-0 border-primary overflow-hidden">
@@ -120,6 +130,7 @@ include_once 'includes/header.php';
     </div>
   </div>
 </section>
+
 <section class="py-5">
   <div class="container py-5">
     <div class="row mb-5">
@@ -129,7 +140,9 @@ include_once 'includes/header.php';
         </h2>
       </div>
     </div>
+
     <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 d-sm-flex justify-content-sm-center">
+
       <div class="col mb-4" data-aos="fade-up" data-aos-delay="100">
         <div class="d-flex align-items-center align-items-sm-start">
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-quote fs-1 text-warning flex-shrink-0">
@@ -152,6 +165,7 @@ include_once 'includes/header.php';
           </div>
         </div>
       </div>
+
       <div class="col mb-4" data-aos="fade-up" data-aos-delay="200">
         <div class="d-flex align-items-center align-items-sm-start">
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-quote fs-1 text-warning flex-shrink-0">
@@ -174,6 +188,7 @@ include_once 'includes/header.php';
           </div>
         </div>
       </div>
+
       <div class="col mb-4" data-aos="fade-up" data-aos-delay="300">
         <div class="d-flex align-items-center align-items-sm-start">
           <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-quote fs-1 text-warning flex-shrink-0">
@@ -199,6 +214,7 @@ include_once 'includes/header.php';
     </div>
   </div>
 </section>
+
 <section class="py-5">
   <div class="container" data-aos="fade-left">
     <div class="text-white bg-primary border rounded border-primary d-flex flex-column justify-content-between align-items-center flex-lg-row p-4 p-lg-5" data-bs-theme="light">
@@ -225,6 +241,7 @@ include_once 'includes/header.php';
     </div>
   </div>
 </section>
+
 <section class="py-4 py-xl-5 mb-5">
   <div class="container" data-aos="fade-up">
     <div class="row mb-2">
@@ -234,9 +251,11 @@ include_once 'includes/header.php';
         </h2>
       </div>
     </div>
+
     <div class="row mb-2">
       <div class="col-md-8 mx-auto">
         <div class="accordion text-muted" role="tablist" id="accordion-1">
+
           <div class="accordion-item">
             <h2 class="accordion-header" role="tab">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-1" aria-expanded="false" aria-controls="accordion-1 .item-1">
@@ -256,6 +275,7 @@ include_once 'includes/header.php';
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header" role="tab">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-2" aria-expanded="true" aria-controls="accordion-1 .item-2">
@@ -276,6 +296,7 @@ include_once 'includes/header.php';
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header" role="tab">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-1 .item-3" aria-expanded="false" aria-controls="accordion-1 .item-3">
@@ -302,6 +323,7 @@ include_once 'includes/header.php';
     </div>
   </div>
 </section>
+
 <section class="py-5">
   <div class="container py-5" data-aos="fade-up">
     <div class="row">
@@ -315,6 +337,7 @@ include_once 'includes/header.php';
         </p>
       </div>
     </div>
+
     <div class="row d-flex justify-content-center">
       <div class="col-md-6">
         <div>

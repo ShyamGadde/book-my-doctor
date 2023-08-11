@@ -53,10 +53,12 @@ if (($_GET["filter"] ?? '') === "true") {
       <input type="hidden" name="filter" value="true">
       <div class="row py-2">
         <div class="col p-0 mt-0 mb-2 mb-md-0 d-flex align-items-center justify-content-between col-12 col-md-6">
+
           <div class="dropdown">
             <button class="btn btn-outline-info dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="border-radius: 5px;">
               Filter by&nbsp;
             </button>
+
             <div class="dropdown-menu" style="border-radius: 5px;">
 
               <!-- Filter form -->
@@ -75,6 +77,7 @@ if (($_GET["filter"] ?? '') === "true") {
                     <option>Gastroenterologist</option>
                   </select><label class="form-label" for="specialization">Specialization</label>
                 </div>
+
                 <div class="mb-3 form-floating">
                   <select class="form-select" id="degree" autofocus="" name="degree" style="border-radius: 5px">
                     <option selected value="">Choose degree</option>
@@ -103,7 +106,6 @@ if (($_GET["filter"] ?? '') === "true") {
                   <input class="btn btn-primary rounded-pill" type="submit" value="Filter" />
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -123,13 +125,13 @@ if (($_GET["filter"] ?? '') === "true") {
               </select>
             </div>
           </div>
-
         </div>
 
+        <!-- Search form -->
         <div class="col p-0 m-0 col-12 col-md-6">
-          <!-- Search form -->
           <div class="d-flex align-items-center justify-content-center">
             <input class="form-control ms-md-auto w-75" type="search" name="search" placeholder="Search" style="border-radius: 5px" />
+
             <button class="btn btn-primary btn-secondary px-4 ms-2" type="submit" style="border-radius: 10px">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search" style="font-size: 18px">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
@@ -173,6 +175,7 @@ if (($_GET["filter"] ?? '') === "true") {
     <div class="row row-cols-md-2 g-4">
 
       <?php foreach ($doctors as $doctor) : ?>
+
         <div class="col">
           <div class="card h-100 border-dark shadow pt-4" data-aos="fade-up" style="border-radius: 5px">
             <div>
@@ -195,6 +198,7 @@ if (($_GET["filter"] ?? '') === "true") {
             </div>
           </div>
         </div>
+
       <?php endforeach; ?>
 
     </div>
@@ -203,6 +207,7 @@ if (($_GET["filter"] ?? '') === "true") {
 
 
 <?php if (($_SESSION['role'] ?? '') === 'user') : ?>
+
   <div class="modal fade" role="dialog" tabindex="-1" id="book-appointment-modal" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
       <div class="modal-content rounded-4">
@@ -244,6 +249,7 @@ if (($_GET["filter"] ?? '') === "true") {
   </script>
 
 <?php else : ?>
+
   <div class="modal fade" role="dialog" tabindex="-1" id="book-appointment-modal" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
       <div class="modal-content rounded-4">
@@ -261,6 +267,7 @@ if (($_GET["filter"] ?? '') === "true") {
       </div>
     </div>
   </div>
+
 <?php endif; ?>
 
 

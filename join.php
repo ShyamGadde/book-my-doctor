@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $response = $db->createDoctor($fullname, $email, $password, $phone, $gender, $specialization, $degree, $experience);
+
     if ($response === false) {
       header("Location: join.php?error=1");
     } else {
@@ -79,22 +80,29 @@ include_once "includes/header.php"
 
   <div class="container py-md-5" data-aos="fade-up">
     <div class="row">
+
       <div class="col-md-6 text-center">
         <img class="img-fluid w-100" src="assets/img/illustrations/register.svg" />
       </div>
+
       <div class="col-md-5 col-xl-4 text-center text-md-start">
+
         <h2 class="display-6 fw-bold mb-5" style="margin-bottom: 0">
           <span class="underline pb-1"><strong>Join BookMyDoctor</strong></span>
         </h2>
+
         <form class="needs-validation" method="post" data-bs-theme="light" novalidate="">
+
           <div class="mb-3 form-floating">
             <input class="form-control" type="text" id="name" placeholder="Full Name" name="fullname" value="<?= $_POST['fullname'] ?? '' ?>" autofocus="" required="" style="border-radius: 5px" /><label class="form-label" for="fullname">Full Name</label>
             <div class="invalid-feedback">Please enter your name</div>
           </div>
+
           <div class="mb-3 form-floating">
             <input class="shadow-sm form-control <?= $email_feedback ? 'is-invalid' : '' ?>" type="email" id="email" name="email" placeholder="Email" value="<?= $_POST['email'] ?? '' ?>" autofocus="" required="" pattern="^[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" style="border-radius: 5px" /><label class="form-label" for="email">Email Address</label>
             <div class="invalid-feedback"><?= $email_feedback ?? 'Please enter a valid email address' ?></div>
           </div>
+
           <div class="mb-3 form-floating">
             <input class="shadow-sm form-control" type="password" id="pwd" name="password" placeholder="Password" value="<?= $_POST['password'] ?? '' ?>" autofocus="" minlength="8" maxlength="20" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and must be between 8 to 20 characters" required="" style="border-radius: 5px" />
             <label class="form-label" for="pwd">Password</label>
@@ -191,7 +199,9 @@ include_once "includes/header.php"
               Create account
             </button>
           </div>
+
         </form>
+
         <p class="text-muted">
           Have an account?
           <a href="login.php">Log in&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-arrow-narrow-right">
@@ -201,6 +211,7 @@ include_once "includes/header.php"
               <line x1="15" y1="8" x2="19" y2="12"></line>
             </svg></a>&nbsp;
         </p>
+
       </div>
     </div>
   </div>
