@@ -37,7 +37,7 @@ include_once "includes/header.php";
           <tbody class="table-group-divider">
             <?php foreach ($todays_appointments as $appointment) : ?>
               <tr>
-                <td><?= $appointment['time'] ?></td>
+                <td><?= date('h:i A', strtotime($appointment['time'])) ?></td>
                 <td><?= $appointment['patient_name'] ?></td>
               </tr>
             <?php endforeach; ?>
@@ -70,7 +70,7 @@ include_once "includes/header.php";
             <?php foreach ($upcoming_appointments as $appointment) : ?>
               <tr>
                 <td><?= $appointment['date'] ?></td>
-                <td><?= $appointment['time'] ?></td>
+                <td><?= date('h:i A', strtotime($appointment['time'])) ?></td>
                 <td><?= $appointment['patient_name'] ?></td>
               </tr>
             <?php endforeach; ?>

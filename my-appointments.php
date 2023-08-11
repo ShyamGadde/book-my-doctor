@@ -69,7 +69,7 @@ include_once "includes/header.php";
             <?php foreach ($upcoming_appointments as $appointment) : ?>
               <tr>
                 <td><?= $appointment['date'] ?></td>
-                <td><?= $appointment['time'] ?></td>
+                <td><?= date('h:i A', strtotime($appointment['time'])) ?></td>
                 <td><?= $appointment['doctor_name'] ?></td>
               </tr>
             <?php endforeach; ?>
@@ -103,7 +103,7 @@ include_once "includes/header.php";
             <?php foreach ($appointment_history as $appointment) : ?>
               <tr>
                 <td><?= $appointment['date'] ?></td>
-                <td><?= $appointment['time'] ?></td>
+                <td><?= date('h:i A', strtotime($appointment['time'])) ?></td>
                 <td><?= $appointment['doctor_name'] ?></td>
               </tr>
             <?php endforeach; ?>
