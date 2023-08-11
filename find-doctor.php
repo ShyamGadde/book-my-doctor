@@ -18,7 +18,7 @@ if (($_GET["filter"] ?? '') === "true") {
 }
 ?>
 
-<div style="margin-top: 80px; background: #24285b">
+<div style="margin-top: 80px">
   <div class="toast-container position-fixed top-0 end-0 me-2 mt-2">
     <div class="toast fade bg-danger-subtle" style="border-radius: 5px;" data-aos="fade-left" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
@@ -52,10 +52,10 @@ if (($_GET["filter"] ?? '') === "true") {
     <form id="filter-form">
       <input type="hidden" name="filter" value="true">
       <div class="row py-2">
-        <div class="col p-0 mt-0 mb-2 mb-md-0 d-flex align-items-center justify-content-between col-12 col-md-6">
+        <div class="col col-12 col-md-6 p-0 px-2 mt-0 mb-2 mb-md-0 d-flex align-items-center">
 
-          <div class="dropdown">
-            <button class="btn btn-outline-info dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="border-radius: 5px;">
+          <div class="dropdown d-flex flex-grow-1">
+            <button class="btn btn-white border dropdown-toggle flex-grow-1" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px;">
               Filter by&nbsp;
             </button>
 
@@ -112,10 +112,7 @@ if (($_GET["filter"] ?? '') === "true") {
           <!-- Sort form -->
           <div class="d-flex align-items-center">
             <div class="input-group">
-              <span class="input-group-text" style="
-                      border-top-left-radius: 5px;
-                      border-bottom-left-radius: 5px;
-                    ">Sort by:</span><select id="sort-field" class="form-select" name="sort-field" style="
+              <span class="input-group-text">Sort by:</span><select id="sort-field" class="form-select" name="sort-field" style="
                       border-top-right-radius: 5px;
                       border-bottom-right-radius: 5px;
                     ">
@@ -128,11 +125,11 @@ if (($_GET["filter"] ?? '') === "true") {
         </div>
 
         <!-- Search form -->
-        <div class="col p-0 m-0 col-12 col-md-6">
-          <div class="d-flex align-items-center justify-content-center">
-            <input class="form-control ms-md-auto w-75" type="search" name="search" placeholder="Search" style="border-radius: 5px" />
+        <div class="col p-0 px-2 m-0 col-12 col-md-6">
+          <div class="d-flex align-items-center">
+            <input class="form-control ms-md-auto" type="search" name="search" placeholder="Search" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px" />
 
-            <button class="btn btn-primary btn-secondary px-4 ms-2" type="submit" style="border-radius: 10px">
+            <button class="btn btn-primary btn-secondary" type="submit" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search" style="font-size: 18px">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"></path>
               </svg>
@@ -170,7 +167,7 @@ if (($_GET["filter"] ?? '') === "true") {
   }
 </script>
 
-<section class="mt-5">
+<section class="mt-3">
   <div class="container text-center">
     <div class="row row-cols-md-2 g-4">
 
