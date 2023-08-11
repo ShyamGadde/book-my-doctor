@@ -127,7 +127,7 @@ if (($_GET["filter"] ?? '') === "true") {
         <!-- Search form -->
         <div class="col p-0 px-2 m-0 col-12 col-md-6">
           <div class="d-flex align-items-center">
-            <input class="form-control ms-md-auto" type="search" name="search" placeholder="Search" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px" />
+            <input class="form-control ms-md-auto" type="search" name="search" placeholder="Search by name" style="border-top-left-radius: 5px; border-bottom-left-radius: 5px" />
 
             <button class="btn btn-primary btn-secondary" type="submit" style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-search" style="font-size: 18px">
