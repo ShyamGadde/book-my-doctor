@@ -67,7 +67,7 @@ class Database
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public function authenticate(string $email): bool|array
+  public function authenticate(string $email, string $password): array
   {
     $response = array();
 
@@ -77,9 +77,9 @@ class Database
     $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($record) {
+      $response['valid_email'] = true;
       $response['role'] = 'user';
-      $response['record'] = $record;
-      return $response;
+      $response['uid'] = $record['id'];
     } else {
       $query = "SELECT * FROM doctors WHERE email = ?";
       $stmt = $this->conn->prepare($query);
@@ -87,14 +87,24 @@ class Database
       $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
       if ($record) {
+        $response['valid_email'] = true;
         $response['role'] = 'doctor';
-        $response['record'] = $record;
-        return $response;
+        $response['uid'] = $record['id'];
       } else {
-        // Email not found in either table, authentication failed
-        return false;
+        $response['valid_email'] = false;
+        $response['feedback'] = "This email address is not associated with any account.";
       }
     }
+
+    if ($response['valid_email']) {
+      $response['valid_password'] = password_verify($password, $record['password']);
+
+      if (!$response['valid_password']) {
+        $response['feedback'] = "Incorrect password.";
+      }
+    }
+
+    return $response;
   }
 
   public function getDoctorTodaysAppointments(int $doctorId): array
